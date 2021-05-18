@@ -1,0 +1,270 @@
+#include "Adafruit_Thermal.h"
+
+// Here's the new syntax when using SoftwareSerial (e.g. Arduino Uno) ----
+// If using hardware serial instead, comment out or remove these lines:
+
+#include "SoftwareSerial.h"
+#define TX_PIN 6 // Arduino transmit  YELLOW WIRE  labeled RX on printer
+#define RX_PIN 5 // Arduino receive   GREEN WIRE   labeled TX on printer
+
+SoftwareSerial mySerial(RX_PIN, TX_PIN); // Declare SoftwareSerial obj first
+Adafruit_Thermal printer(&mySerial);     // Pass addr to printer constructor
+// Then see setup() function regarding serial & printer begin() calls.
+
+// Here's the syntax for hardware serial (e.g. Arduino Due) --------------
+// Un-comment the following line if using hardware serial:
+
+//Adafruit_Thermal printer(&Serial1);      // Or Serial2, Serial3, etc.
+
+// -----------------------------------------------------------------------
+
+void setup() {
+
+  pinMode(7, OUTPUT); digitalWrite(7, LOW);
+
+  // NOTE: SOME PRINTERS NEED 9600 BAUD instead of 19200, check test page.
+  mySerial.begin(19200);  // Initialize SoftwareSerial
+  //Serial1.begin(19200); // Use this instead if using hardware serial
+  printer.begin();        // Init printer (same regardless of serial type)
+
+
+  printer.setSize('L');  
+  printer.println(F("Restructuring\nTechnology:\nExploring the\nInterplay\nbetween Humans\nand Technology\nto foster\nEmotional\nIntelligence"));
+  printer.setSize('s');
+  printer.boldOn();
+  printer.println(F("by Tigris Li"));
+  printer.boldOff();
+
+  printer.println(F(" "));
+
+  printer.setSize('S');
+  printer.println(F("Grown to be a futurist and alongside the transitioning age towards a digitalized world - technology has always been a tool and extended support for me to manifest my ideas into physical creations. As said by American inventor and futurist, Ray Kurzweil, technology goes beyond mere tool making; it is a process of creating ever more powerful technology using the tools from the previous round of innovation (Kurzweil, 2001). In addition to this, he stated that our technology, our machines, is part of our humanity. We created them to extend ourselves, and that is what is unique about human beings (Sahota, 2018). It is his words and views on technology that has guided the values of my practice; that we use technology as part of our beings and not as replacements of our livelihoods."));
+
+  printer.println(F(" "));
+  printer.println(F("Personally, I’ve taken a great interest in Romanticism and implemented it in my work by valuing the importance of emotional awareness and utilizing art to convey emotion or provoke an emotional response from audiences (Kehoe, n.d.). Romanticism was a movement that originated in the late 18th century that emphasized individualism, nature, imagination, and emotions. The Romantics desired for humans to connect with their emotional core which is identical to the desires I want to achieve in my works. However, rather than looking at the relation that humans had to nature in the Romanticism movement - I look at the relation that humans have with technology today because there are similar elements that parallel the two."));
+
+  printer.println(F("This sparked my investigation:"));
+  printer.boldOn();
+  printer.println(F("Can technology be used to help humans discover and connect with their emotional intelligence?"));
+  printer.boldOff();
+  printer.println(F("Emotional intelligence (EI) is the the ability to monitor one's own and other people's emotions, to discriminate between different emotions and label them appropriately, and to use emotional information to guide thinking and behaviour (Salovey and Mayer, 1990). This has been defined by Peter Salovey and John Mayer; leading pioneers and researchers of emotional intelligence, as a subset to social intelligence – which was first popularized by Edward Thorndike as ‘the ability to understand men and women, boys and girls – to act wisely in human relations’ (Kihlstron and Cantor, 2011). I believe the value of emotional intelligence has great potential to foster and build our relationships because the more emotional information we acquire, not only from ourselves but others, give us the ability to respond effectively, to recognize our feelings and adjust them accordingly to our social environments and interactions. There is great power in this because it can also be seen as a currency for empathy, but rather exchanging it for goods or services, you can retain this emotional currency of information. What this results in is the formation of more meaningful relationships as you can broaden your frame of emotional references and have a greater capacity at understanding the experiences and feelings of others."));
+  printer.println(F(" "));
+  printer.println(F("This has demonstrated to me that emotional intelligence is a conscious choice we can make and nurture as we gain more life experience. We just need the right tools to help us effectively identify them so we can become more greatly aware of our emotions, which I believe technology can fulfill."));
+  printer.println(F(" "));
+  printer.println(F("Reiterating Kurzweil (2018) statement, the technology and machinery that we have created is embedded in our humanity. Interestingly, machines can be prone to manufacturing defects, which in many ways act similarly to humans as people make mistakes. Yet in machinery, it seems less forgivable than human nature despite the fact that these devices are at the core, designed and created by humans."));
+  printer.println(F(" "));
+  printer.println(F("I believe that there is a space for co-existence. Especially as we further enter the digital age, the more dependant we’re becoming on technology and vice versa; one cannot act without the other. Technology is created by humans, and humans power technology."));
+  printer.println(F(" "));
+  printer.println(F("I’ve distilled these ideas in my practice to primarily focus on using technology in tactile and interactive ways where my works require the active engagement of the viewers in order for each specific experience to achieve its purpose. The way I am able to accomplish this is by repositioning how I intentionally use technology with the approach of Physical Computing to design experiences that aim to increase people’s emotional intelligence and facilitate human relationships."));
+  printer.println(F(" "));
+  printer.println(F("Physical Computing is a microcontroller embedded system that formed in the 1950s, but its association with artists and designers became more well recognized in 1979 by Ars Electronica, an institute in the field of new media art. At the time, Physical Computing was described as a social immersive media as it expanded possibilities for human-computer interaction which also allowed for social participation (Franklin, 2012). Moreover, it’s an interdisciplinary cross-over between art / design and computer science – a new media that can take interactive physical systems and hardware to sense and respond to the analog world (Franklin, 2012)."));
+  printer.println(F(" "));
+  printer.println(F("The most prominent element that I’ve recognized in Physical Computing is its consideration on how humans can navigate and express themselves in physical spaces whilst being connected in the digital sphere. With hardware that can interpret human data and turn them into outputted responses, it opens a gateway of possibilities for computer-to-human interactions which can be designed to optimized the human body and self. This significance that Physical Computing has on computer-to-human interactions parallels the prominence of nature, individuality and emotions that Romanticism embodies. "));
+  printer.println(F(" "));
+  printer.boldOn();
+  printer.println(F("What is nature to romanticism, is the technology to my practice. Both with the purpose of helping individuals identify their core emotional self and being."));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("Within this report, I wish to explore how I employ elements of Romanticism and the interactive system of Physical Computing to investigate emotional intelligence. This will be supplemented by my belief that emotional intelligence is comparable to machine learning because with machine learning – if you can provide more data to train a model, it can create better and more accurate predictions in the future. Nevertheless, it’s important to recognize that there are many different approaches to machine learning, each with their own techniques that allow them to achieve better predicted results. Albeit the general process of machine learning can function similarly to emotional intelligence. Particularly given that the more you are emotionally aware and can understand the reasons behind certain feelings, the more this knowledge can be taken and applied to manage your interactions with others in the future and allow you to build deeper connections in relationships."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+  printer.boldOn();
+  printer.println(F("Transitioning Generations; Born Between Two Worlds"));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("Considering that Gen Z. and Millenials were born amidst the rapid acceleration of digital technologies - attaching themselves to both analogue and digital worlds - I have felt compelled to primarily focus on these two generations. Although technology does have its benefits to forge social ties and facilitate communication across distanced boundaries, I’ve found it cannot replace the experience of face-to-face connections. Specifically, as face-to-face conversation is a rich experience that involves drawing on memories, making connections, making mental images, associations and choosing a response (Chan, 2019). Interactions via digital screens and text messages do not have have the ability to create experiences to the same degree because being in the presence of another person is multi-sensory. All of our five senses are constantly at work and taking imprints of information from our environmental surroundings to the body language, tonality, proximity of the other person."));
+  printer.println(F(" "));
+  printer.println(F("Without these elements, technology can be a double-edged sword that increases communication abilities but also be the key hindrance in social interactions. Namely, decreasing our ability to create meaningful relationships because misunderstandings, miscommunication and assumptions impact how we view others, and happen very often when there is no face-to-face communication (Geladi, 2018). Technology is often meant to make things simpler and facilitate our daily lives as we navigate the world. While this may be true, if technology prevents us from interacting with other humans physically and causes one to become more isolated as they rely solely on their screens, it can be very harmful."));
+  printer.println(F(" "));
+  printer.println(F("As a result, my communication design practice allows users to experiment and investigate new forms of communication through tactile and sensory means. Particularly beyond visual sights, in emphasis of the capacity at which the human body is able to receive sensory information such as sound, smell, taste and touch."));
+  printer.println(F(" "));
+  printer.println(F("It’s through this reasoning that I believe physical computing and sensory communication can allow us to restructure this imbalance by increasing our emotional intelligence."));
+  printer.println(F(" "));
+  printer.println(F("But, what does this really mean? And what does it look like?"));
+  printer.println(F(" "));
+  printer.println(F("Blending this with technology is something that can be achieved by emphasizing ‘human’ factors with interactivity and biometric input. At the current moment, we are seeing that the majority of technology’s physical interactions are on a flat surfaced screen with only thumb mobility. Through interactive experiences that integrate sensory communication, we can remove this limitation and open a new door that takes on the intersection between humans and technology. What this illustrates is an opportunity for co-creation and co-authored narratives to be produced as a result of humans and technology actively engaging with one another."));
+  printer.println(F(" "));
+  printer.println(F("Even though physical computing enables human to computer interaction, it has it's limitations. After all, technology fundamentally cannot function without the instructional guidance of human written code. To this end, we can write human code into these programs that calibrates and processes human input, in the form of emotions, to calculate into sensory outcomes. This can be evidenced in my first self-directed brief which looks at the emotional narrative of our memories through the form of taste and smell, all powered by the biometric input of our breathing. Furthermore, my second self-directed brief looks into the speculative future and interrogates if artificial hormones can be a means to resolve imbalanced emotional data (results) and be an aid in falling in love. These projects allow users the ability to not only perceive and process their emotions but investigate and acquire a deeper conscious understanding of them through their innate senses. Subsequently, this can allow them to regulate emotional information – which can guide them to be more effective communicators which impacts our actions and how we influence other people’s social response to us."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+
+  printer.boldOn();
+  printer.println(F("Artists References: The Kindling to my Practice"));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("Reading about the evolving relationship between art and technology, and how society interacts with it has shown the transcending responsibility artists have as they use emerging technologies as a tool and medium to their work. The techno-critical term for an artist is interesting and something I resonate with because it allows artists to be critical of technology whilst still using it to show viewers what is at stake and the possibilities to resolve it (Pepi, 2019). Using technology as the medium to power their works, the following artists look primarily at ways of capturing and evoking human emotions through participatory installations that are interactive."));
+  printer.println(F(" "));
+  printer.println(F("For instance, Emilie Baltz is an experience designer who works between the intersection of food and technology. She utilises our five senses as a storytelling tool to increase and deepen human engagement."));
+  printer.println(F(" "));
+  printer.println(F("One of Baltz’s experiments, Lickestra (2014), is a musical performance that experiments with tongue and taste where various tones are triggered when ice creams are licked (e.g. Figure 1). This poses an interesting relationship with the mobility of tongues, the element of taste, and its ability to produce sound. It opens a door that utilizes our body in a different (and playful) way to communicate; going beyond what we're accustomed to. Perhaps this could be an introductory future in understanding emotional attributes in how one savours and communicates through the movement of tongue, but rather than using it for speaking we are analyzing its functions of distinguishing flavour profiles."));
+  printer.println(F(" "));
+  printer.println(F("Furthermore, her piece called Dream Machine (2017) is an interactive experience in the form of an olfactory organ that explores how people experience emotions through elements of smell, sound, touch and lights (e.g. Figure 2). Each organ is associated with one of 10 basic human emotions, such as happiness, hope, content, sadness, anger, to name a few. Each emotion produces its own unique smell and sound which invites users to engage with their feelings and examine human emotions through their senses."));
+  printer.println(F(" "));
+  printer.println(F("This is provoking, it invites new forms of conversation that doesn’t require words, because at times, there are actions that words cannot express and this can be extended to sensory communication. If people are able to be aware of how their body responds to smell, taste, and sound – this can increase their emotional intelligence because it expands the horizon to their emotional processing as they associate and recognize multi-sensory input to specific emotions. "));
+  printer.println(F(" "));
+  printer.println(F("Much like her, I want to use the five human senses as a mechanism and tool for storytelling to aid and deepen not only our emotional awareness, but to enhance our human interactions as a result of it. However, being that emotions are extremely subjective to each person – I believe Baltz’s works have certain limitations because the smells, sounds, etc. can be considered as curated and subjective to what she has aligned with her own emotions. Therefore, it can be said that the people experiencing her installations are actually collecting and understanding her perspective more than their own. To this effect, I aim to create works that consciously exercises people’s mind and challenge them to investigate their own emotions by designing installations where they are required to give their own input in order to experience it."));
+  printer.println(F(" "));
+  printer.println(F("Additionally, her experiences are interactive, stimulating, and evidence how she uses technology to facilitate her interactions – which is how I view physical computing as my choice of medium. Specifically as technology is vital to the works that I produce, however, not the central topic. The main themes of my work will always be human centric and ensuring that our instinctive and natural human qualities are presented. Although there are elements of interactivity, I believe this could be pushed more by customizing the experiences of individuals to recognize the unique and distinctive qualities that differentiates us from one another. I believe there’s a much deeper scope to be explored in human emotions and sensory communication."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+
+  printer.boldOn();
+  printer.println(F("Self-Directed Brief 01: Brewing Tastes of Memories"));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("My investigation amongst the themes of emotional intelligence and sensory communication through physical computing can be illustrated in my first self-directed brief. Having previously touched on scent and emotions in Emotional Pheromones, I wanted to further explore this through memories and taste by experimenting with flavour profiles to investigate the emotional narratives that people experience and how they could engage with it (e.g. Figure 3)."));
+  printer.println(F(" "));
+  printer.println(F("Starting by looking at spices due to their poignant fragrances and the multitude of dimensions they have in types of flavour profiles; such as sweet, bitter, salty, sour, and umami. They hold a whole body of sensory characteristics from cooling to pungent, earthy to floral, and more – which was an indication that there was a narrative that could be explored. Especially considering that contrasting tastes can cause chemical reactions in the brain. This idea of creating a chemical reaction in the brain sparked a curiosity and is something I’ve pursued in my second self-directed brief."));
+  printer.println(F(" "));
+  printer.println(F("Furthermore, throughout my development there was a primary focus on taste, however it was unavoidable that scent was a prevalent factor as one can’t go without the other."));
+  printer.println(F(" "));
+  printer.println(F("I looked at Mickaël Wiesengrün’s Révélateur installation (2014), where he recreates smells of the past from its location to provide historical context and evoke memories within a specific space (e.g. Figure 4, Figure 5). For instance, he created individual tubes with smells of sweat, grease, and metal to illustrate the setting of a former factory."));
+  printer.println(F(" "));
+  printer.println(F("What is interesting about this installation is that it forces participants to exercise their imagination based solely on smell to frame the context and history of the building. More importantly, smell has a powerful connection to our brain because the olfactory bulb (which receives input of odors) has a direct link to two areas of the brain. The first being the amygdala which regulates emotions, and the other is the hippocampus which controls our memories. It’s said that inputs received through the sensory systems, individually or together, can produce emotion and influence cognition (Kadohisa, 2013). What this results in is an unconscious increase in emotional intelligence because participants are actively identifying smell and associating them with their own library of emotional knowledge. This then allows them to create a narrative of the factory workers who occupied that space and because they are referencing their own emotions, it also builds empathy as their mind draws a depiction of the people hard at work. In addition, I was fond of the idea of using smell as a pre-cursor to taste as a form of completion to the mind by receiving a tangible outcome as a result of it."));
+  printer.println(F(" "));
+  printer.println(F("Speaking with Martha Pryke (2021), who worked in a food lab as a food technologist, was a great help in giving me resources and explaining the fundamental structure and science behind taste. I was fascinated by her explanation of the journey that someone can take based on specific flavours due to the varying sizes of molecules that determine the order at which you taste something. An example she gave me was that bitterness has one of the largest molecules, therefore in comparison to sweetness, the bitterness will be more prominent and at the forefront of our taste buds because its molecules will be the first to break down."));
+  printer.println(F(" "));
+  printer.println(F("This is how my concept began to develop as I wanted to allow users to go on a journey through their emotions via taste. It inspired me to direct my project as an intimate and personal experience for people – particularly as they engage and dissect their own emotions. Namely as Martha and I discussed how taste is a personal experience because it’s not only subjective but also a genetic cause. Each person has a unique taste bud and their relationship with flavours have varying intensities. As this was a case that I could not control, I reframed my project to give individuals the freedom to interpret smell and taste. In order to do so, I would have to present an array of botanical and spices that touch on the different flavour profiles (i.e. sweet, sour, bitter, and spice) at which they can pick and choose to associate with specific emotions."));
+  printer.println(F(" "));
+  printer.println(F("From this, I developed a variety of concepts to analyze memories and tastes – one being, exploring the intricate steps of wine tasting in evaluating the visual, aroma and taste of wine to determine its characteristics. To which I thought the sensory examination of these three elements could correlate to memories by translating them into the emotions an individual feels as they recall a specific memory."));
+  printer.println(F(" "));
+  printer.println(F("However, after reflecting on my initial experiment with spices, I thought about how they work in conjunction to foods and wanted to find a simple way to blend different tastes which could represent certain emotions. This brought me to brewing tea, where I discovered that it can give sensory qualities and provide tasting notes that can be attributed to memory. An equally important discovery was that the sensory evaluation of tea is a somewhat slower, calmer, more poetic activity that can reveal interesting layers of flavor and aroma, allowing us to recognize and get to know every element of each tea’s character (Teforia, 2015). Thinking about tea as a slower process, made me consider the amount time it takes for someone to reflect and engage with their emotions, which is crucial because the intention of my experience is not to be a fleeting moment. I wanted to look at memories as a life form, because at the very core, memories are a reactivation of connections between different parts of your brain that were active at some previous time (Stockton, 2017). The concept of reactivation sparked this idea of ‘breathing memories back to life’ which inspired me to use our breath as a biometric input to act like a time machine."));
+  printer.println(F(" "));
+  printer.println(F("Moving along, thinking about the logistics of how I wanted viewers to interact with the installation – I investigated brewing devices. I discovered the siphon coffee maker which creates a vacuum chamber due to high levels of contained heat that pressurizes water to transfer into another vessel. With the amount of time it takes to steep water and tea leaves, which on average is anywhere between 3-7 minutes, it presents a moment for users to reflect back on their memories and the emotional experience of it. This was achievable by connecting an air pressure sensor to an Arduino to monitor breathing input. Through a variety of experiments, I attached the sensor to a CPR mask where breath detection will activate a series of motors to ignite the flame of a micro burner. This will then boil the water and allow for the vacuum chamber to function."));
+  printer.println(F(" "));
+  printer.println(F("From this, the experience I’ve designed asks users to reflect back on a memory of their choosing through increments of emotions they felt during that time. With an array of eleven botanicals, participants will then associate each emotion to a specific scent from a botanical and take a spoonful to put in the top vessel. Once they have completed and filled the top vessel with their desired emotional botanicals. They will then breathe into the CPR mask for at least 3 minutes which will activate the vacuum chamber to the top vessel and start brewing. At the end, the user will receive a drinkable compilation of their memory based on their emotions."));
+  printer.println(F(" "));
+  printer.println(F("This project has allowed me to investigate sensory communication through the means of smell and taste to analyze personal narratives and journeys into how we navigate our past. Much like history, we look back to acknowledge the past and ultimately learn from these experiences, which can be similarly applied to this. Looking back to our memories and emotions allows us to develop a better understanding of who we are because our past shapes who we have become and how we pursue our relationships with others. Being able to comprehend the complexity of our emotions give us an advantage as it increases our EI and allow us to have better emotional responses. Thus, increasing our ability to empathize with others, communicate better, respond to conflicts, which all fundamentally improve relationships."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+  printer.boldOn();
+  printer.println(F("Self-Directed Brief 02 - Data Romantics: The Incu-dater"));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("Delving further in my investigation in emotional intelligence, I envision a future where technology takes a fundamental turn towards experiential tactility. The idea of quantifying emotional data through the means of biometric input to enlighten ones own emotional recognition is greatly fascinating."));
+  printer.println(F(" "));
+  printer.println(F("Wanting to challenge the notions and rethink the human experience, I began to investigate the idea of exploring emotional intelligence through the lens of hormones. Particularly as we naturally secrete sets of hormones in our human interactions which creates our bonds and relationships, especially when the concept of love is involved."));
+  printer.println(F(" "));
+  printer.println(F("The led me to question;"));
+  printer.println(F(" "));
+  printer.println(F("What makes people fall in love?"));
+  printer.println(F(" "));
+  printer.println(F("What provokes the union of two people? What elements create these intimate bonds? What are the hormones and chemicals that cause this, and can it be intentionally and consciously produced?"));
+  printer.println(F(" "));
+  printer.println(F("Can the concept of ‘falling in love’ be reproduced in a non-organic way that accelerates it?"));
+  printer.println(F(" "));
+  printer.println(F("To initiate my research, I looked at the science behind falling in love. According to Dr. Helen Fisher, a human behaviour researcher and her team of scientists at Rutgers, romantic love can be divided into three categories; lust, attraction, and attachment. Whereby each category contains its own set of hormones (Wu, 2017). It’s said that in the ‘formula’ for love, hormones are the ‘unexplainable complications to the equation’ (Wu, 2017). Particularly in the case of lust and attraction as their sets of hormones are concentrated by temporary ‘feel good’ hormones such as dopamine and serotonin which shuts the prefrontal cortex of the brain that dictates rational behaviour. However, ‘Attachment’ is composed of oxytocin and vasopressin which are made in the hypothalamus and controls our emotions — making it an influential factor for long-term relationships. After discovering oxytocin, it revealed to me many answers about how two people come together to create a union. Oxytocin is known as the ‘love hormone’ as it releases in events that are precursors to moments of bonding. Its sociable effects are responsible for reinforcing positive feelings towards people we care about, which then begins to form and increase our affection. This is what creates the union of two people."));
+  printer.println(F(" "));
+  printer.println(F("Questioning the idea of actively reproducing hormones as a means to facilitate and aid human interactions; I briefly explored the idea of bio-hacking as its ethos is to introduce biochemical or cybernetics that enhance and improve one’s body. However, my intentions are not to alter and improve the human self by implementing a chip into our bodies that can solve a problem by replacing it. Rather, I intend on creating a device that can provide assistance to facilitate our human relationships by increasing our emotional intelligence in consideration to another person. Looking through references and projects about hormones, I found that the majority were scientific research projects. Recognizing the limitations of my knowledge in chemistry and science, I had to reflect on how I would proceed as a designer."));
+  printer.println(F(" "));
+  printer.println(F("Trying to find a substitute to recreating hormones — I delved into the functionalities of love and discovered that there is a ‘template’ for the ideal partner in the subconscious. This equation includes, appearance + personality + pheromones. What was interesting in this article was their emphasis on smell being an important aspect of love. Notably being that pheromones are ‘chemicals capable of acting like hormones outside the body’ (Obringer and Konstantinovsky, 2005). Taking the idea of pheromones and smells has been something that I have initiated in past briefs. Although not scientifically proven, we could assume it to be a conduit in analysing emotions to aid our human interactions. Specifically due to the fact that within our five senses, our olfactory abilities to perceive smell has an ‘exceptional position in the neurological processing of sensory stimuli’ (Amores and Maes, 2017)."));
+  printer.println(F(" "));
+  printer.println(F("Initially, I envisioned a dating pod with two treadmills inside for two individuals on a date. Particularly being that pheromones can be released more prominently through exercise and sweat, which I thought could be a means to collect biometric data in the form of a treadmill. Taking the speed at which they walk or run at, will diffuse a specific ‘hormone’ infused smell that is connected to their emotions to fast-track them to fall in love with each other. Wanting to emphasize the absurdity of ‘optimal dating,’ my intentions were to create something that is functional but may not be logical — especially with the idea of quantifying emotions."));
+  printer.println(F(" "));
+  printer.println(F("Progressing, I looked at ways I could map emotions to physical movements as I did not have the means to build a treadmill, and in actuality, I could track people’s movement with sensors and an Arduino. This led me to look into muscle sensors after discovering a research paper called ‘Bodily Maps of Emotions’ (2013) conducted by a group of Finish students. They asked participants to colour regions on the body and the bodily sensations they experience with different feelings (e.g. Figure 6). Using their results, I thought about mapping the different emotions and tie it into the theory of pheromone release by emulating sweat through active body movements in those specified areas. This would then visually translate into coloured lights that represent specific emotions in addition to the diffused smells."));
+  printer.println(F(" "));
+  printer.println(F("A turning point was when I observed the works of Tatiana Toutikian (2017), she designed a series of objects for the speculative future that looked at the effects of technology and its impact on future human needs. She created ‘Martini de Hormones’ as one of her eight fictional designs, which allows individuals to extract their hormones to create cocktails out of their emotions to build empathy amongst one another. Although this piece was not actively operative, it sparked conversations and questions of what could potentially be achievable in the future to help solve problems in society (Aouf, 2017). In an interview, she was asked if speculative design can enhance our future realities, to which she responded; critical design is not about whether something is good and another is bad. The importance lies in that designers are ‘providing alternatives that are provocative yet funny, but most importantly triggers discussion’ (Kuitert, 2017)."));
+  printer.println(F(" "));
+  printer.println(F("This was revealing because the speculative future is unknown, and when one is trying to design for a reality that has not happened yet, there are a lot of considerations needed. It presents possibilities for an alternative reality at which technology can be re-imagined and scrutinized. From this, I decided to set this brief in the speculative future – allowing me to re-embark on my inquiry about hormones and critically question how it could resolve emotional deficiency. I determined that I no longer needed to go down the route of pheromones as a result of this. Additionally, I considered the perceptions people will have and how they may react when confronted with something they don’t know exists through a critical lens. Which led me to design with a humorous tone by presenting exaggerated absurdity, because as Toutikian identified, it can be a conductive way to provoke people to have conversations."));
+  printer.println(F(" "));
+  printer.println(F("Particularly in my case, as I wanted to create a device that allowed for two people to fall in love. There needs to be a satirical tone to it as the idea of a machine that solves the time and complex factors that make people fall in love is in fact, nonsensical. Thinking about design fiction has helped redirect the intentions of my project to design an experience that reflects my practice where I am able to overcome the hurdles that are outside of my discipline. The overarching aim of my works are to use technology as a means to design an experience that enable computer to human interactions, which will aid a person to evaluate their emotions."));
+  printer.println(F(" "));
+  printer.println(F("Moreover, I thought about the spatial environment and design of the pod. Being that it’s set in the future, I envisioned them to be placed in public spaces where any couple or people who were out on a date could enter this space and turn their date into the most effective and enhanced dating experience. With this pod, I also wanted to play on the reality of dating in the ‘public eye’ and how exposed we are out in public where we can share private moments with another person, but also be easily watched. There was a desire to not only deliver an experience inside the box to the participants, but also give spectator’s a viewing experience as well."));
+  printer.println(F(" "));
+  printer.println(F("Continuing on, I came to a realization that there was a disconnect as I kept adding elements to my dating incubator such as muscle sensors, lights and smell to provide different forms of sensory communication. Fundamentally, I want to give people a means of analyzing the emotional standpoint of their relationship with their partner."));
+  printer.println(F(" "));
+  printer.println(F("I refined my concept to resolve this issue."));
+  printer.println(F(" "));
+  printer.println(F("The Dating Incubator Lab experience is set in the speculative future, designed for two individuals who are either dating or in an established relationship looking to fall in love. As they enter the pod, they are presented with a control panel where each person must stand at opposite ends of it. On each of the two sides are five circular dials that are associated with an emotion; love, happiness, sadness, disappointment and anger. The individuals are asked to turn the dials to evaluate the amount of each emotion they feel in their current relationship with the person standing across them. Once both parties have completed this, they must press a button on the side of the control panel which also takes in their heart rate, and when both heart rates are detected, it calculates their lab results. This is done by measuring the average of each person's individual emotion to determine the statistics of their relationship’s emotional standpoint and prints out their results. From this, it also tells you the dose of oxytocin hormones required to balance out and fulfill the missing quantity needed in their relationship to fall in love. They are then presented with the option to either take the dose of oxytocin to resolve the hardships of their relationship, or they can choose to take the results and walk away. If they choose the latter, it’s up to them to decide how they communicate to either mend any difficulties in their relationship or end it."));
+  printer.println(F(" "));
+  printer.println(F("Effectively, this project questions and criticizes how two people communicate with each other and specifically through their emotions. It’s difficult to quantify emotions and evaluate them, but with computers, this is possible because they can only process numbers and data. This proves to be an interesting way to subjectively acquire emotional information from a person and output it in an objective way through calculated statistics."));
+  printer.println(F(" "));
+  printer.println(F("With this, there’s an interesting co-creational aspect between humans and computers, which is what Physical Computing aims to achieve and my objective is to apply this with our emotions. When people are presented with all the factual data of their emotions, it can allow them to gain an insight of how they feel and provoke them to question why they feel a certain emotion at such a high or low percentage in comparison to others. This is what will increase their emotional intelligence because they are become more self-aware and gaining a deep understanding of their emotions. And in this case, they are questioning these feelings in relation to another person which can help them improve their relationship. However, there are certain limitations because even if you present all this emotional data to a person, it still ultimately comes down to the person itself to choose what they want to do with this information. All that technology can do in this case is be an enabler for those who want a deeper understanding of their own emotions and those of others to increase their EQ and help them navigate experiences and human relations."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+  printer.boldOn();
+  printer.println(F("A vital theme within all of my work is the co-dependancy that technology has on humans. This has been purposely designed as I’ve used technology so it is only functional with not only the presence of a human body but more importantly, with their interactivity. There’s an interesting narrative that comes with these binary oppositions, and even more so when we place subjective factors of our humanity in it, such as emotions. Technology is unlike humans who have backgrounds of life experience that guides the way they respond and behave. Taking on the philosophy of phenomenology, we have a responsibility in restructuring the intentions of how we use available technologies to assists us in the physical world, but through a human-centred lens. This can be achieved by integrating technology as a tactile interactive medium, and we still have the power and control to dictate how we position technology within our lives and its purpose."));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("To this effect, my practice investigates physical computing to reposition our intentions with technology to cultivate our emotional intelligence. The key element that makes this successful is the computer-to-human interaction within my practice being co-creational. Whereby the unique attributes to a person’s individuality are deeply taken into consideration as it produces an outcome that can only be specifically associated to them in subjective manners. This is demonstrated in Brewing Tastes of Memories which observes sensory communication through the form of smell and taste, and takes biometric data in our breathing to reflect on the emotional narratives of our memories. What’s more, the Incu-Dater criticizes the prospects of emotional shortcomings in relationships and challenges individuals to measure their feelings towards another person to determine if artificial hormones is required as a solution to any weak points."));
+  printer.println(F(" "));
+  printer.println(F("I wouldn’t have been able to achieve this if my works weren’t powered by technology because it is a facilitator to my experiences, however, it wouldn’t be functional or capable to achieve its purpose without the input of humans. Technology remains a medium that individuals, society and culture shapes. Being able to position technology as a tool that we co-create with to foster emotional intelligence will allow us to achieve new narratives in how we navigate the world, create meaningful relationships, and be empathetic as we become more self-aware of the emotions that shapes our being."));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+  printer.boldOn();
+  printer.println(F("References"));
+  printer.boldOff();
+  printer.println(F(" "));
+  printer.println(F("Amores, J.and Maes, P. (2017) Essence: Olfactory Interfaces for Unconscious Influence of Mood and Cognitive Performance. [online] MIT Media Lab. Available at: https://www.media.mit.edu/publications/essence-ol/ "));
+  printer.println(F(" "));
+  printer.println(F("Aouf, R. S. (2017) Lebanese students anticipate future human needs for Beirut Design Week exhibition. [online] Dezeen. Available at: https://www.dezeen.com/2017/05/26/lebanese-students-anticipate-future-human-needs-beirut-design-week-speculative-needs-exhibition/"));
+  printer.println(F(" "));
+  printer.println(F("Baltz, E. (2017) Dream Machine [Installation]. Liberty Science Center, New York."));
+  printer.println(F(" "));
+  printer.println(F("Baltz, E. (2014) Lickestra [Performance]. Visible Futures Lab, New York."));
+  printer.println(F(" "));
+  printer.println(F("Bradberry, T. (2017) The Power of Emotional Intelligence. August. Available at: https://youtu.be/auXNnTmhHsk (Accessed: 9 May 2021)"));
+  printer.println(F(" "));
+  printer.println(F("Chan, M. (2019) The dying art of conversation – has technology killed our ability to talk face-to-face? [online] The Conversation. Available at: https://theconversation.com/the-dying-art-of-conversation-has-technology-killed-our-ability-to-talk-face-to-face-112582 "));
+  printer.println(F(" "));
+  printer.println(F("Franklin, J. (2012) Exploration of Physical Computing: Digital Interfaces using Microsoft Kinect and Peggy 2 LED Matrix. [online] core.ac.uk. Available at: https://core.ac.uk/download/pdf/19155618.pdf "));
+  printer.println(F(" "));
+  printer.println(F("Geladi, N. (2018) Technology is Affecting the Quality of Human Face-to-Face Interaction. [online] Medium. Available at: https://medium.com/digital-society/technology-is-affecting-the-quality-of-human-face-to-face-interaction-146fe72a29c5."));
+  printer.println(F(" "));
+  printer.println(F("Human Kinetics (2010) Dimensions of Leisure for Life: Individuals and Society. Champaign, Ill.: Human Kinetics."));
+  printer.println(F(" "));
+  printer.println(F("Kadohisa, M. (2013) Effects of odor on emotion, with implications. Frontiers in Systems Neuroscience, 7. doi: 10.3389/fnsys.2013.00066."));
+  printer.println(F(" "));
+  printer.println(F("Kehoe, B., n.d. What is Romanticism?. [online] National Trust. Available at: https://www.nationaltrust.org.uk/features/what-is-romanticism"));
+  printer.println(F(" "));
+  printer.println(F("Kuitert, F. (2017) DIY DNA manipulation and flesh coins – exhibition speculates on future needs. [online] Frame. Available at: https://www.frameweb.com/article/diy-dna-manipulation-and-flesh-coins-exhibition-speculates-on-future-needs"));
+  printer.println(F(" "));
+  printer.println(F("Kurzweil, Ray. (2001) The Law of Accelerating Returns. [online] Kurzweil. Available at: https://www.kurzweilai.net/the-law-of-accelerating-returns#:~:text=Technology%20goes%20beyond%20mere%20tool,the%20previous%20round%20of%20innovation.&text=The%20first%20technological%20steps%2Dsharp,tens%20of%20thousands%20of%20years. "));
+  printer.println(F(" "));
+  printer.println(F("Moulon, D. (2018) Art Beyond Digital. Brescia: LINK Editions."));
+  printer.println(F(" "));
+  printer.println(F("Nummenmaa, L. et al. (2013) Bodily maps of emotions, Proceedings of the National Academy of Sciences, 111(2), pp. 646–651. doi: 10.1073/pnas.1321664111."));
+  printer.println(F(" "));
+  printer.println(F("Obringer, L. A. and Konstantinovsky, M. (2005). How Love Works. [online] HowStuffWorks.com. Available at: https://people.howstuffworks.com/love.htm "));
+  printer.println(F(" "));
+  printer.println(F("Pepi, M. (2019) Tool Time: How Technology Uses Us. New York: The Shed."));
+  printer.println(F(" "));
+  printer.println(F("Pryke. M. (2021) Video call conversation with Tigris Li, 9 February."));
+  printer.println(F(" "));
+  printer.println(F("Przybylla, M., Romeike, R. (2014) Physical Computing and its Scope – Towards a Constructionist Computer Science Curriculum with Physical Computing. [online] Research Gate. Available at: https://www.researchgate.net/publication/276466451_Physical_Computing_and_its_Scope_-_Towards_a_Constructionist_Computer_Science_Curriculum_with_Physical_Computing "));
+  printer.println(F("Riopel, L. (2019) Key names in Emotional Intelligence research. [online] PositivePsychology.com. Available at: https://positivepsychology.com/emotional-intelligence-goleman-research/."));
+  printer.println(F(" "));
+  printer.println(F("Sahota, N. (2018) Human 2.0 Is Coming Faster Than You Think. Will You Evolve With The Times? [online] Forbes. Available at: https://www.forbes.com/sites/cognitiveworld/2018/10/01/human-2-0-is-coming-faster-than-you-think-will-you-evolve-with-the-times/?sh=34eab0e4284f"));
+  printer.println(F(" "));
+  printer.println(F("Salovey, P. and Mayer, J. D. (1990) Emotional Intelligence, Imagination, Cognition and Personality, 9(3), pp. 185–211. doi: 10.2190/DUGG-P24E-52WK-6CDG."));
+  printer.println(F(" "));
+  printer.println(F("Stockton, N. (2017) Your brain doesn’t contain memories. It is memories. [online] Wired. Available at: https://www.wired.co.uk/article/how-memories-work-brains "));
+  printer.println(F(" "));
+  printer.println(F("Teforia (2015) The Sensory Experience of Tasting Tea. [online] Medium. Available at: https://medium.com/@teforia/the-sensory-experience-of-tasting-tea-13429337bf59"));
+  printer.println(F(" "));
+  printer.println(F("Toutikian, T. (2017) Speculative Needs XOXO [Prototype Art]. Future of Living, Singapore."));
+  printer.println(F(" "));
+  printer.println(F("Wiesengrün, M. (2014) Révélateur [Installation]. Design Academy Eindhoven, Eindhoven."));
+  printer.println(F(" "));
+  printer.println(F("Wu, K. (2017) Love, Actually: The science behind lust, attraction, and companionship. [online] Harvard STIN. Available at: https://sitn.hms.harvard.edu/flash/2017/love-actually-science-behind-lust-attraction-companionship/ "));
+
+  printer.println(F(" "));
+  printer.println(F(" "));
+  printer.println(F(" "));
+  printer.println(F(" "));
+
+
+
+  printer.sleep();      // Tell printer to sleep
+  delay(3000L);         // Sleep for 3 seconds
+  printer.wake();       // MUST wake() before printing again, even if reset
+  printer.setDefault(); // Restore printer to defaults
+}
+
+void loop() {
+}
